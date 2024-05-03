@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import PersonCard from "./components/PersonCard";
+import Competence from "./components/Competence";
+import Competences from "./components/Competences";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const myCompetences = ["React", "PostgerSQL", "Php", "HTML/CSS"];
+  const AllCompetences = [
+    "MobX",
+    "Проектирование",
+    "PM2",
+    "Тестирование",
+    "Кэширование",
+    "WebSocket",
+    "Docker",
+    "Swagger",
+    "Nginx",
+    "TypeScript",
+  ];
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <PersonCard
+        photo={
+          "https://cdn.fishki.net/upload/users/2020/12/03/1320767/ecdf7eba4487ff5f835d991bf0f3b5fb.jpg"
+        }
+        fullName={"Даниил Кутявин"}
+      />
+      <h2>Мои компетенциии</h2>
+      <div className="competences">
+        {myCompetences.map((myCompetences) => (
+          <Competence name={myCompetences} />
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h2>Хотелось бы изучить</h2>
+      <Competences competences={AllCompetences} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
